@@ -1,0 +1,65 @@
+STARLING WOODWORKING - IMAGE GUIDE
+===================================
+
+Place your woodworking photos in this directory with the following names:
+
+REQUIRED IMAGES:
+----------------
+
+1. hero.jpg
+   - Size: 1920x1080px (or larger)
+   - Use: Main background image on homepage
+   - Suggestion: A stunning wide shot of your best work or beautiful workshop scene
+
+2. workshop.jpg
+   - Size: 800x600px (or larger)
+   - Use: About section image
+   - Suggestion: Workshop photo, tools, or craftsman working
+
+3. project1.jpg
+   - Size: 1200x900px recommended (4:3 aspect ratio)
+   - Use: Portfolio gallery item #1
+   - Suggestion: Custom dining table project
+
+4. project2.jpg
+   - Size: 1200x900px recommended (4:3 aspect ratio)
+   - Use: Portfolio gallery item #2
+   - Suggestion: Kitchen cabinetry project
+
+5. project3.jpg
+   - Size: 1200x900px recommended (4:3 aspect ratio)
+   - Use: Portfolio gallery item #3
+   - Suggestion: Bookshelf or built-in project
+
+6. project4.jpg
+   - Size: 1200x900px recommended (4:3 aspect ratio)
+   - Use: Portfolio gallery item #4
+   - Suggestion: Coffee table or furniture piece
+
+7. project5.jpg
+   - Size: 1200x900px recommended (4:3 aspect ratio)
+   - Use: Portfolio gallery item #5
+   - Suggestion: Millwork or trim detail project
+
+8. project6.jpg
+   - Size: 1200x900px recommended (4:3 aspect ratio)
+   - Use: Portfolio gallery item #6
+   - Suggestion: Bedroom furniture or other custom piece
+
+IMAGE TIPS:
+-----------
+- Use high-quality, well-lit photos
+- Show finished products in use or nicely staged
+- Compress images to keep file sizes under 500KB each
+- Use consistent aspect ratios for portfolio images (4:3 recommended)
+- JPEG format is recommended for photographs
+
+OPTIONAL:
+---------
+You can add more portfolio images by:
+1. Adding more images as project7.jpg, project8.jpg, etc.
+2. Updating the HTML in index.html to include more portfolio items
+3. Following the same pattern as the existing items
+
+The website will work with placeholder images if you don't have photos yet,
+but it will look much better with real woodworking photos!
