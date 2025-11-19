@@ -684,6 +684,27 @@ section {
     color: var(--accent-color);
 }
 
+.footer-bottom p {
+    margin-bottom: 0.5rem;
+}
+
+.site-credit {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.site-credit a {
+    color: var(--secondary-color);
+    transition: var(--transition);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.site-credit a:hover {
+    color: var(--bg-white);
+    border-bottom-color: var(--bg-white);
+}
+
 /* ===================================
    Responsive Design
    =================================== */
