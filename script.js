@@ -2,6 +2,64 @@
    STARLING WOODWORKING — script.js
    ============================================= */
 
+/* --- All images per style, used for hover cycling and lightbox --- */
+const styleImages = {
+  farmhouse: [
+    'images/FarmhouseStyle/20260212_172822.webp',
+    'images/FarmhouseStyle/20260212_172838.webp',
+    'images/FarmhouseStyle/20260212_173411.webp',
+    'images/FarmhouseStyle/20260324_180454.webp',
+    'images/FarmhouseStyle/IMG_20250914_191633046.webp',
+    'images/MiscBuilds/FarmhouseTallDeluxeWhite.webp',
+  ],
+  classic: [
+    'images/ClassicStyle/20220917_084303.webp',
+    'images/ClassicStyle/20220917_084435.webp',
+    'images/ClassicStyle/20220917_085036.webp',
+    'images/ClassicStyle/20221105_092737.webp',
+    'images/ClassicStyle/20211206_141421.webp',
+    'images/ClassicStyle/20220528_113828.webp',
+    'images/ClassicStyle/20220929_210701.webp',
+    'images/ClassicStyle/4DClassicWhiteDark2.webp',
+    'images/ClassicStyle/IMG_20260328_103839944_HDR.webp',
+    'images/ClassicStyle/IMG_20260328_104346214.webp',
+    'images/ClassicStyle/20260207_151035.webp',
+  ],
+  craftsman: [
+    'images/CraftsmanStyle/IMG_20260420_072605.webp',
+    'images/CraftsmanStyle/IMG_20260420_072607.webp',
+    'images/CraftsmanStyle/IMG_20260420_072609.webp',
+    'images/CraftsmanStyle/IMG_20260420_072611.webp',
+    'images/CraftsmanStyle/IMG_20260420_072615.webp',
+    'images/CraftsmanStyle/IMG_20260420_072617.webp',
+  ],
+  decor: [
+    'images/HomeDecor/20210326_170629.webp',
+    'images/HomeDecor/20210326_170648.webp',
+    'images/HomeDecor/20210326_170652.webp',
+    'images/HomeDecor/20210326_170735.webp',
+    'images/HomeDecor/20200428_142454.webp',
+    'images/HomeDecor/20200428_142556.webp',
+    'images/HomeDecor/20220111_155042.webp',
+    'images/HomeDecor/20220111_155129.webp',
+    'images/HomeDecor/20220207_130825.webp',
+    'images/HomeDecor/20220328_151630.webp',
+    'images/HomeDecor/20220401_105904.webp',
+    'images/MiscBuilds/20220729_133621b.webp',
+    'images/MiscBuilds/20230406_193825b.webp',
+    'images/MiscBuilds/20230414_122848.webp',
+    'images/MiscBuilds/20250215_205626.webp',
+    'images/diningtable.webp',
+  ],
+};
+
+const styleLabels = {
+  farmhouse: 'Farmhouse',
+  classic:   'Classic',
+  craftsman: 'Craftsman',
+  decor:     'Home Décor',
+};
+
 /* --- Nav: scroll state --- */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
@@ -9,8 +67,8 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* --- Nav: mobile drawer --- */
-const navBurger = document.getElementById('navBurger');
-const navLinks  = document.getElementById('navLinks');
+const navBurger  = document.getElementById('navBurger');
+const navLinks   = document.getElementById('navLinks');
 const navOverlay = document.getElementById('navOverlay');
 
 navBurger.addEventListener('click', () => {
@@ -33,13 +91,13 @@ function closeMenu() {
   document.body.style.overflow = '';
 }
 
-/* --- Hero: slow bg zoom on load --- */
+/* --- Hero: slow bg zoom --- */
 const heroBg = document.querySelector('.hero__bg');
 if (heroBg) {
-  const heroImg = new Image();
-  heroImg.onload = () => heroBg.classList.add('loaded');
-  heroImg.src = 'images/hero.webp';
-  if (heroImg.complete) heroBg.classList.add('loaded');
+  const img = new Image();
+  img.onload = () => heroBg.classList.add('loaded');
+  img.src = 'images/hero.webp';
+  if (img.complete) heroBg.classList.add('loaded');
 }
 
 /* --- Smooth scroll (offset for fixed nav) --- */
@@ -48,27 +106,74 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(anchor.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
-    const top = target.getBoundingClientRect().top + window.scrollY - parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
-    window.scrollTo({ top, behavior: 'smooth' });
+    const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
   });
 });
 
-/* --- Gallery filter --- */
-const filterBtns   = document.querySelectorAll('.filter-btn');
-const galleryItems = Array.from(document.querySelectorAll('.gallery__item'));
+/* =============================================
+   STYLE CARDS — hover cycling + lightbox open
+   ============================================= */
+document.querySelectorAll('.style-card').forEach(card => {
+  const style = card.dataset.style;
+  const images = styleImages[style];
+  if (!images) return;
 
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    galleryItems.forEach(item => {
-      item.classList.toggle('hidden', filter !== 'all' && item.dataset.category !== filter);
-    });
+  const imgA = card.querySelector('.style-card__img--a');
+  const imgB = card.querySelector('.style-card__img--b');
+  let useA = true;   // which layer is currently visible
+  let idx   = 0;
+  let timer = null;
+
+  /* Preload first few images for instant cycling */
+  images.slice(0, 4).forEach(src => { new Image().src = src; });
+
+  function cycleImage() {
+    idx = (idx + 1) % images.length;
+    const next = useA ? imgB : imgA;
+    const curr = useA ? imgA : imgB;
+    next.src = images[idx];
+    /* Small delay so browser has a chance to start loading before fade */
+    next.onload = () => {
+      next.classList.add('active');
+      curr.classList.remove('active');
+      useA = !useA;
+    };
+    /* Fallback if already cached (onload won't fire) */
+    if (next.complete) {
+      next.classList.add('active');
+      curr.classList.remove('active');
+      useA = !useA;
+    }
+  }
+
+  card.addEventListener('mouseenter', () => {
+    timer = setInterval(cycleImage, 2200);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    clearInterval(timer);
+    timer = null;
+    /* Reset to first image */
+    const curr = useA ? imgA : imgB;
+    const other = useA ? imgB : imgA;
+    imgA.src = images[0];
+    imgA.classList.add('active');
+    other.classList.remove('active');
+    useA = true;
+    idx = 0;
+  });
+
+  /* Open lightbox at current cycling index */
+  card.addEventListener('click', () => openLightbox(style, idx));
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(style, idx); }
   });
 });
 
-/* --- Lightbox --- */
+/* =============================================
+   LIGHTBOX
+   ============================================= */
 const lightbox        = document.getElementById('lightbox');
 const lightboxImg     = document.getElementById('lightboxImg');
 const lightboxCaption = document.getElementById('lightboxCaption');
@@ -76,14 +181,12 @@ const lightboxClose   = document.getElementById('lightboxClose');
 const lightboxPrev    = document.getElementById('lightboxPrev');
 const lightboxNext    = document.getElementById('lightboxNext');
 
-let currentIndex = 0;
+let currentStyle = null;
+let currentIdx   = 0;
 
-function visibleItems() {
-  return galleryItems.filter(i => !i.classList.contains('hidden'));
-}
-
-function openLightbox(index) {
-  currentIndex = index;
+function openLightbox(style, startIdx = 0) {
+  currentStyle = style;
+  currentIdx   = startIdx;
   renderLightbox();
   lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -91,45 +194,35 @@ function openLightbox(index) {
 }
 
 function renderLightbox() {
-  const items = visibleItems();
-  const item  = items[currentIndex];
-  const img   = item.querySelector('img');
-  const cap   = item.querySelector('figcaption');
-  lightboxImg.src = img.src;
-  lightboxImg.alt = img.alt;
-  lightboxCaption.textContent = cap ? cap.textContent : '';
-  lightboxPrev.style.visibility = currentIndex > 0 ? 'visible' : 'hidden';
-  lightboxNext.style.visibility = currentIndex < items.length - 1 ? 'visible' : 'hidden';
+  const images = styleImages[currentStyle];
+  lightboxImg.src = images[currentIdx];
+  lightboxImg.alt = `${styleLabels[currentStyle]} — photo ${currentIdx + 1}`;
+  lightboxCaption.textContent = `${styleLabels[currentStyle]}  ·  ${currentIdx + 1} / ${images.length}`;
+  lightboxPrev.style.visibility = currentIdx > 0 ? 'visible' : 'hidden';
+  lightboxNext.style.visibility = currentIdx < images.length - 1 ? 'visible' : 'hidden';
 }
 
 function closeLightbox() {
   lightbox.classList.remove('active');
   document.body.style.overflow = '';
-  lightboxImg.src = '';
+  setTimeout(() => { lightboxImg.src = ''; }, 350);
 }
-
-galleryItems.forEach(item => {
-  item.addEventListener('click', () => {
-    const idx = visibleItems().indexOf(item);
-    if (idx !== -1) openLightbox(idx);
-  });
-});
 
 lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
 lightboxPrev.addEventListener('click', () => {
-  if (currentIndex > 0) { currentIndex--; renderLightbox(); }
+  if (currentIdx > 0) { currentIdx--; renderLightbox(); }
 });
 lightboxNext.addEventListener('click', () => {
-  if (currentIndex < visibleItems().length - 1) { currentIndex++; renderLightbox(); }
+  if (currentIdx < styleImages[currentStyle].length - 1) { currentIdx++; renderLightbox(); }
 });
 
 document.addEventListener('keydown', e => {
   if (!lightbox.classList.contains('active')) return;
-  if (e.key === 'Escape')      closeLightbox();
-  if (e.key === 'ArrowLeft'  && currentIndex > 0) { currentIndex--; renderLightbox(); }
-  if (e.key === 'ArrowRight' && currentIndex < visibleItems().length - 1) { currentIndex++; renderLightbox(); }
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft'  && currentIdx > 0) { currentIdx--; renderLightbox(); }
+  if (e.key === 'ArrowRight' && currentIdx < styleImages[currentStyle].length - 1) { currentIdx++; renderLightbox(); }
 });
 
 /* Touch swipe in lightbox */
@@ -138,19 +231,16 @@ lightbox.addEventListener('touchstart', e => { touchStartX = e.touches[0].client
 lightbox.addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - touchStartX;
   if (Math.abs(dx) < 40) return;
-  if (dx < 0 && currentIndex < visibleItems().length - 1) { currentIndex++; renderLightbox(); }
-  if (dx > 0 && currentIndex > 0) { currentIndex--; renderLightbox(); }
+  const images = styleImages[currentStyle];
+  if (dx < 0 && currentIdx < images.length - 1) { currentIdx++; renderLightbox(); }
+  if (dx > 0 && currentIdx > 0)                 { currentIdx--; renderLightbox(); }
 });
 
 /* --- Process strip: drag to scroll --- */
 const strip = document.getElementById('processStrip');
 if (strip) {
   let isDown = false, startX, scrollLeft;
-  strip.addEventListener('mousedown', e => {
-    isDown = true;
-    startX = e.pageX - strip.offsetLeft;
-    scrollLeft = strip.scrollLeft;
-  });
+  strip.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft; });
   strip.addEventListener('mouseleave', () => { isDown = false; });
   strip.addEventListener('mouseup',    () => { isDown = false; });
   strip.addEventListener('mousemove', e => {
@@ -160,7 +250,7 @@ if (strip) {
   });
 }
 
-/* --- Scroll reveal (Intersection Observer) --- */
+/* --- Scroll reveal --- */
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {

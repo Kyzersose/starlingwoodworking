@@ -17,7 +17,8 @@
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="#home" class="nav__logo">
-        <img src="images/Logo/Website Logo.svg" alt="Starling Woodworking" height="52" width="160">
+        <img src="images/Logo/Bird & Wire.webp" alt="" aria-hidden="true" class="nav__logo-mark" height="40" width="40">
+        <span class="nav__logo-text">Starling Woodworking</span>
       </a>
       <ul class="nav__links" id="navLinks">
         <li><a href="#work" class="nav__link">Our Work</a></li>
@@ -49,208 +50,72 @@
     </div>
   </section>
 
-  <!-- Styles Strip -->
-  <section class="styles-strip">
-    <div class="styles-strip__inner">
-      <div class="styles-strip__item reveal">
-        <span class="styles-strip__num">01</span>
-        <h3>Farmhouse</h3>
-        <p>Rustic warmth with clean lines and natural character</p>
-      </div>
-      <div class="styles-strip__divider"></div>
-      <div class="styles-strip__item reveal">
-        <span class="styles-strip__num">02</span>
-        <h3>Classic</h3>
-        <p>Timeless profiles built for generations</p>
-      </div>
-      <div class="styles-strip__divider"></div>
-      <div class="styles-strip__item reveal">
-        <span class="styles-strip__num">03</span>
-        <h3>Craftsman</h3>
-        <p>Precision joinery and purposeful detailing</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery -->
-  <section class="gallery" id="work">
-    <div class="gallery__header">
-      <div class="gallery__header-text">
-        <h2 class="section-title reveal">Our Work</h2>
-        <p class="section-sub reveal">Every piece handcrafted from hardwoods — poplar, oak, walnut, maple, and cherry</p>
-      </div>
-      <div class="gallery__filters" id="galleryFilters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="farmhouse">Farmhouse</button>
-        <button class="filter-btn" data-filter="classic">Classic</button>
-        <button class="filter-btn" data-filter="craftsman">Craftsman</button>
-        <button class="filter-btn" data-filter="decor">Home Décor</button>
-        <button class="filter-btn" data-filter="custom">Custom</button>
-      </div>
+  <!-- Styles Gallery -->
+  <section class="styles-gallery" id="work">
+    <div class="styles-gallery__intro reveal">
+      <span class="eyebrow">Our Work</span>
+      <h2 class="section-title">Three Styles.<br>Endless Possibilities.</h2>
+      <p class="section-sub">Hover to explore each collection. Click to view the full slideshow.</p>
     </div>
 
-    <div class="gallery__grid" id="galleryGrid">
-      <!-- Farmhouse -->
-      <figure class="gallery__item" data-category="farmhouse">
-        <img src="images/FarmhouseStyle/20260212_172822.webp" alt="Farmhouse style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Farmhouse Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="farmhouse">
-        <img src="images/FarmhouseStyle/20260212_172838.webp" alt="Farmhouse style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Farmhouse Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="farmhouse">
-        <img src="images/FarmhouseStyle/20260212_173411.webp" alt="Farmhouse style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Farmhouse Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="farmhouse">
-        <img src="images/FarmhouseStyle/20260324_180454.webp" alt="Farmhouse style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Farmhouse Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="farmhouse">
-        <img src="images/FarmhouseStyle/IMG_20250914_191633046.webp" alt="Farmhouse style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Farmhouse Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="farmhouse">
-        <img src="images/MiscBuilds/FarmhouseTallDeluxeWhite.webp" alt="Farmhouse Tall Deluxe in White" loading="lazy" width="800" height="600">
-        <figcaption>Farmhouse — Tall Deluxe</figcaption>
-      </figure>
+    <div class="styles-gallery__grid">
 
-      <!-- Classic -->
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/20220917_084303.webp" alt="Classic style bedroom furniture" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/20220917_084435.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/20220917_085036.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/20221105_092737.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/20211206_141421.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/20220528_113828.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/20220929_210701.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/4DClassicWhiteDark2.webp" alt="Classic furniture in white and dark finish" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/IMG_20260328_103839944_HDR.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/IMG_20260328_104346214.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="classic">
-        <img src="images/ClassicStyle/20260207_151035.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Classic Collection</figcaption>
-      </figure>
+      <article class="style-card" data-style="farmhouse" tabindex="0" role="button" aria-label="View Farmhouse Collection">
+        <div class="style-card__bg">
+          <img class="style-card__img style-card__img--a active" src="images/FarmhouseStyle/20260212_172822.webp" alt="">
+          <img class="style-card__img style-card__img--b" src="images/FarmhouseStyle/20260212_172838.webp" alt="">
+        </div>
+        <div class="style-card__veil"></div>
+        <div class="style-card__body">
+          <span class="style-card__num">01</span>
+          <h3 class="style-card__name">Farmhouse</h3>
+          <p class="style-card__desc">Rustic warmth with clean lines and natural character</p>
+          <span class="style-card__cta">View Collection <span aria-hidden="true">→</span></span>
+        </div>
+      </article>
 
-      <!-- Craftsman -->
-      <figure class="gallery__item" data-category="craftsman">
-        <img src="images/CraftsmanStyle/IMG_20260420_072605.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Craftsman Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="craftsman">
-        <img src="images/CraftsmanStyle/IMG_20260420_072607.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Craftsman Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="craftsman">
-        <img src="images/CraftsmanStyle/IMG_20260420_072609.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Craftsman Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="craftsman">
-        <img src="images/CraftsmanStyle/IMG_20260420_072611.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Craftsman Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="craftsman">
-        <img src="images/CraftsmanStyle/IMG_20260420_072615.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Craftsman Collection</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="craftsman">
-        <img src="images/CraftsmanStyle/IMG_20260420_072617.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
-        <figcaption>Craftsman Collection</figcaption>
-      </figure>
+      <article class="style-card" data-style="classic" tabindex="0" role="button" aria-label="View Classic Collection">
+        <div class="style-card__bg">
+          <img class="style-card__img style-card__img--a active" src="images/ClassicStyle/20220917_084303.webp" alt="">
+          <img class="style-card__img style-card__img--b" src="images/ClassicStyle/20220917_084435.webp" alt="">
+        </div>
+        <div class="style-card__veil"></div>
+        <div class="style-card__body">
+          <span class="style-card__num">02</span>
+          <h3 class="style-card__name">Classic</h3>
+          <p class="style-card__desc">Timeless profiles built to endure for generations</p>
+          <span class="style-card__cta">View Collection <span aria-hidden="true">→</span></span>
+        </div>
+      </article>
 
-      <!-- Home Décor -->
-      <figure class="gallery__item" data-category="decor">
-        <img src="images/HomeDecor/20200428_142454.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
-        <figcaption>Home Décor</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="decor">
-        <img src="images/HomeDecor/20200428_142556.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
-        <figcaption>Home Décor</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="decor">
-        <img src="images/HomeDecor/20210326_170629.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
-        <figcaption>Home Décor</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="decor">
-        <img src="images/HomeDecor/20210326_170648.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
-        <figcaption>Home Décor</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="decor">
-        <img src="images/HomeDecor/20210326_170652.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
-        <figcaption>Home Décor</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="decor">
-        <img src="images/HomeDecor/20210326_170735.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
-        <figcaption>Home Décor</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="decor">
-        <img src="images/HomeDecor/20220111_155042.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
-        <figcaption>Home Décor</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="decor">
-        <img src="images/HomeDecor/20220207_130825.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
-        <figcaption>Home Décor</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="decor">
-        <img src="images/HomeDecor/20220328_151630.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
-        <figcaption>Home Décor</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="decor">
-        <img src="images/HomeDecor/20220401_105904.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
-        <figcaption>Home Décor</figcaption>
-      </figure>
+      <article class="style-card" data-style="craftsman" tabindex="0" role="button" aria-label="View Craftsman Collection">
+        <div class="style-card__bg">
+          <img class="style-card__img style-card__img--a active" src="images/CraftsmanStyle/IMG_20260420_072605.webp" alt="">
+          <img class="style-card__img style-card__img--b" src="images/CraftsmanStyle/IMG_20260420_072607.webp" alt="">
+        </div>
+        <div class="style-card__veil"></div>
+        <div class="style-card__body">
+          <span class="style-card__num">03</span>
+          <h3 class="style-card__name">Craftsman</h3>
+          <p class="style-card__desc">Precision joinery and purposeful detailing</p>
+          <span class="style-card__cta">View Collection <span aria-hidden="true">→</span></span>
+        </div>
+      </article>
 
-      <!-- Custom -->
-      <figure class="gallery__item" data-category="custom">
-        <img src="images/MiscBuilds/20220729_133621b.webp" alt="Custom build" loading="lazy" width="800" height="600">
-        <figcaption>Custom Build</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="custom">
-        <img src="images/MiscBuilds/20230406_193825b.webp" alt="Custom build" loading="lazy" width="800" height="600">
-        <figcaption>Custom Build</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="custom">
-        <img src="images/MiscBuilds/20230414_122848.webp" alt="Custom build" loading="lazy" width="800" height="600">
-        <figcaption>Custom Build</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="custom">
-        <img src="images/MiscBuilds/20250215_205626.webp" alt="Custom build" loading="lazy" width="800" height="600">
-        <figcaption>Custom Build</figcaption>
-      </figure>
-      <figure class="gallery__item" data-category="custom">
-        <img src="images/diningtable.webp" alt="Custom dining table" loading="lazy" width="800" height="600">
-        <figcaption>Custom Dining Table</figcaption>
-      </figure>
+      <article class="style-card" data-style="decor" tabindex="0" role="button" aria-label="View Home Décor Collection">
+        <div class="style-card__bg">
+          <img class="style-card__img style-card__img--a active" src="images/HomeDecor/20210326_170629.webp" alt="">
+          <img class="style-card__img style-card__img--b" src="images/HomeDecor/20220207_130825.webp" alt="">
+        </div>
+        <div class="style-card__veil"></div>
+        <div class="style-card__body">
+          <span class="style-card__num">04</span>
+          <h3 class="style-card__name">Home Décor</h3>
+          <p class="style-card__desc">Handcrafted accessories and personalized pieces</p>
+          <span class="style-card__cta">View Collection <span aria-hidden="true">→</span></span>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -279,8 +144,8 @@
       </div>
       <div class="about__images reveal">
         <div class="about__img-stack">
-          <img src="images/ProcessPics/IMG_20260323_133401058.webp" alt="Woodworking in progress" loading="lazy" width="560" height="420">
-          <img src="images/ProcessPics/IMG_20260405_195255925.webp" alt="Detail of handcrafted furniture" loading="lazy" width="560" height="420" class="about__img-offset">
+          <img class="about__img-main" src="images/ProcessPics/IMG_20260323_133401058.webp" alt="Woodworking in progress" loading="lazy" width="560" height="420">
+          <img class="about__img-offset" src="images/ProcessPics/IMG_20260405_195255925.webp" alt="Detail of handcrafted furniture" loading="lazy" width="560" height="420">
         </div>
       </div>
     </div>
@@ -433,7 +298,10 @@
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__brand">
-        <img src="images/Logo/Website Logo.svg" alt="Starling Woodworking" height="44" width="140">
+        <div class="footer__logo">
+          <img src="images/Logo/Bird & Wire.webp" alt="" aria-hidden="true" class="footer__logo-mark" height="36" width="36">
+          <span class="footer__logo-text">Starling Woodworking</span>
+        </div>
         <p>We build lifetime-quality furniture for everyday budgets.</p>
       </div>
       <nav class="footer__nav" aria-label="Footer navigation">
