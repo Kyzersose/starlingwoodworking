@@ -26,7 +26,6 @@ const styleImages = {
     'images/ClassicStyle/20260207_151035.webp',
   ],
   craftsman: [
-    'images/CraftsmanStyle/IMG_20260420_072605.webp',
     'images/CraftsmanStyle/IMG_20260420_072607.webp',
     'images/CraftsmanStyle/IMG_20260420_072609.webp',
     'images/CraftsmanStyle/IMG_20260420_072611.webp',
