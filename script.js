@@ -219,8 +219,12 @@ lightboxNext.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', e => {
-  if (!lightbox.classList.contains('active')) return;
-  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'Escape') {
+    /* Close inquiry first if open, otherwise close lightbox */
+    if (inquiry.classList.contains('active')) { closeInquiry(); return; }
+    if (lightbox.classList.contains('active')) closeLightbox();
+  }
+  if (!lightbox.classList.contains('active') || inquiry.classList.contains('active')) return;
   if (e.key === 'ArrowLeft'  && currentIdx > 0) { currentIdx--; renderLightbox(); }
   if (e.key === 'ArrowRight' && currentIdx < styleImages[currentStyle].length - 1) { currentIdx++; renderLightbox(); }
 });
@@ -229,12 +233,59 @@ document.addEventListener('keydown', e => {
 let touchStartX = 0;
 lightbox.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
 lightbox.addEventListener('touchend', e => {
+  if (inquiry.classList.contains('active')) return;
   const dx = e.changedTouches[0].clientX - touchStartX;
   if (Math.abs(dx) < 40) return;
   const images = styleImages[currentStyle];
   if (dx < 0 && currentIdx < images.length - 1) { currentIdx++; renderLightbox(); }
   if (dx > 0 && currentIdx > 0)                 { currentIdx--; renderLightbox(); }
 });
+
+/* =============================================
+   INQUIRY POPUP
+   ============================================= */
+const inquiry      = document.getElementById('inquiry');
+const inquiryClose = document.getElementById('inquiryClose');
+const inquiryThumb = document.getElementById('inquiryThumb');
+const inquiryEmail = document.getElementById('inquiryEmail');
+
+/* Clicking the lightbox image opens the inquiry */
+lightboxImg.addEventListener('click', () => {
+  if (lightboxImg.src) openInquiry(lightboxImg.src);
+});
+
+function openInquiry(imgSrc) {
+  inquiryThumb.src = imgSrc;
+
+  /* Build a public URL for the image to include in the email.
+     On S3/CloudFront this will be a real https:// URL.
+     On local file:// it falls back to just the filename. */
+  let imgUrl;
+  const origin = window.location.origin;
+  if (origin && origin !== 'null' && !origin.startsWith('file:')) {
+    const imgPath = imgSrc.includes('/images/')
+      ? imgSrc.substring(imgSrc.indexOf('/images/') + 1)
+      : imgSrc;
+    imgUrl = `${origin}/${imgPath}`;
+  } else {
+    imgUrl = imgSrc.split('/').pop();
+  }
+
+  const subject = encodeURIComponent('Inquiry from Starling Woodworking website');
+  const body = encodeURIComponent(
+    `Hi,\n\nI came across one of your pieces on your website and I'm interested in having something similar made:\n\n${imgUrl}\n\nPlease reach out at your convenience — I'd love to discuss the details.\n\nThank you!`
+  );
+  inquiryEmail.href = `mailto:info@starlingwoodworking.com?subject=${subject}&body=${body}`;
+
+  inquiry.classList.add('active');
+}
+
+function closeInquiry() {
+  inquiry.classList.remove('active');
+}
+
+inquiryClose.addEventListener('click', closeInquiry);
+inquiry.addEventListener('click', e => { if (e.target === inquiry) closeInquiry(); });
 
 /* --- Process strip: drag to scroll --- */
 const strip = document.getElementById('processStrip');
