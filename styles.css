@@ -112,7 +112,7 @@ address { font-style: normal; }
   gap: 0.75rem;
 }
 .nav__logo-mark {
-  height: 40px;
+  height: calc(var(--nav-h) - 8px);
   width: auto;
   flex-shrink: 0;
 }
