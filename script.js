@@ -287,9 +287,13 @@ function closeInquiry() {
 inquiryClose.addEventListener('click', closeInquiry);
 inquiry.addEventListener('click', e => { if (e.target === inquiry) closeInquiry(); });
 
-/* --- Process strip: drag to scroll --- */
-const strip = document.getElementById('processStrip');
+/* --- Process strip: drag to scroll + progress + edge fade --- */
+const strip            = document.getElementById('processStrip');
+const progressFill     = document.getElementById('processProgressFill');
+const edgeFade         = document.getElementById('processEdgeFade');
+
 if (strip) {
+  /* Drag-to-scroll */
   let isDown = false, startX, scrollLeft;
   strip.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft; });
   strip.addEventListener('mouseleave', () => { isDown = false; });
@@ -299,6 +303,32 @@ if (strip) {
     e.preventDefault();
     strip.scrollLeft = scrollLeft - (e.pageX - strip.offsetLeft - startX);
   });
+
+  /* Progress bar + edge fade on scroll */
+  function updateProcessUI() {
+    const max = strip.scrollWidth - strip.clientWidth;
+    if (max <= 0) return;
+    const pct = strip.scrollLeft / max;
+    if (progressFill) progressFill.style.width = `${pct * 100}%`;
+    if (edgeFade)     edgeFade.style.opacity   = pct >= 0.97 ? '0' : '1';
+  }
+  strip.addEventListener('scroll', updateProcessUI, { passive: true });
+  updateProcessUI();
+
+  /* One-time auto-nudge when section first enters viewport */
+  const processSection = document.querySelector('.process');
+  let nudged = false;
+  const nudgeObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !nudged) {
+      nudged = true;
+      nudgeObserver.disconnect();
+      setTimeout(() => {
+        strip.scrollTo({ left: 160, behavior: 'smooth' });
+        setTimeout(() => strip.scrollTo({ left: 0, behavior: 'smooth' }), 750);
+      }, 500);
+    }
+  }, { threshold: 0.5 });
+  if (processSection) nudgeObserver.observe(processSection);
 }
 
 /* --- Scroll reveal --- */

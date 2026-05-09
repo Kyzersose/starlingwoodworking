@@ -670,10 +670,38 @@ address { font-style: normal; }
 /* =============================================
    PROCESS
    ============================================= */
-.process { background: var(--parchment); padding: 5rem 0 0; overflow: hidden; }
+.process { background: var(--parchment); padding: 5rem 0 0; }
 .process__header {
   max-width: var(--max-w); margin: 0 auto;
   padding: 0 2rem 3rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.process__hint {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  padding-bottom: 0.15rem;
+  flex-shrink: 0;
+}
+.process__hint-arrow {
+  display: inline-block;
+  color: var(--gold);
+  animation: nudgeArrow 1.8s ease-in-out infinite;
+}
+
+/* Strip wrapper clips the edge fade */
+.process__strip-wrap {
+  position: relative;
+  overflow: hidden;
 }
 .process__strip {
   overflow-x: auto;
@@ -683,6 +711,39 @@ address { font-style: normal; }
 }
 .process__strip:active { cursor: grabbing; }
 .process__strip::-webkit-scrollbar { display: none; }
+
+/* Right-edge parchment fade with bouncing arrow */
+.process__edge-fade {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 110px;
+  background: linear-gradient(to right, transparent, var(--parchment) 65%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1.2rem;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+.process__edge-arrow {
+  font-size: 2.2rem;
+  color: var(--gold);
+  line-height: 1;
+  animation: nudgeArrow 1.4s ease-in-out infinite;
+}
+
+/* Gold scroll-progress bar */
+.process__progress {
+  height: 2px;
+  background: rgba(46,26,14,0.08);
+}
+.process__progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gold);
+  transition: width 0.08s linear;
+}
+
 .process__track {
   display: flex; gap: 4px;
   width: max-content;
@@ -835,9 +896,13 @@ address { font-style: normal; }
 /* =============================================
    KEYFRAMES
    ============================================= */
-@keyframes fadeUp  { to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeIn  { to { opacity: 1; } }
-@keyframes pulse   { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.15; } }
+@keyframes fadeUp    { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn    { to { opacity: 1; } }
+@keyframes pulse     { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.15; } }
+@keyframes nudgeArrow {
+  0%, 100% { transform: translateX(0);    opacity: 1; }
+  60%       { transform: translateX(7px); opacity: 0.7; }
+}
 
 /* =============================================
    RESPONSIVE — TABLET
