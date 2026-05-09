@@ -1,313 +1,451 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starling Woodworking - Craftsmanship & Quality</title>
-    <meta name="description" content="Expert woodworking and custom furniture crafted with passion. Transform your space with handcrafted wood pieces.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starling Woodworking — Handcrafted Furniture, Opelika Alabama</title>
+  <meta name="description" content="Family-owned woodworking studio crafting lifetime-quality furniture in Farmhouse, Classic, and Craftsman styles. Visit us at Angel's Antiques in Opelika, AL.">
+  <link rel="preload" as="image" href="images/hero.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h1>Starling Woodworking</h1>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h2 class="hero-title">Handcrafted Excellence</h2>
-            <p class="hero-subtitle">Tradition in every piece</p>
-            <a href="#portfolio" class="btn btn-primary">View Our Work</a>
-        </div>
-    </section>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#home" class="nav__logo">
+        <img src="images/Logo/Website Logo.svg" alt="Starling Woodworking" height="52" width="160">
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#work" class="nav__link">Our Work</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#visit" class="nav__link">Visit Us</a></li>
+      </ul>
+      <a href="#visit" class="nav__cta">Get in Touch</a>
+      <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__overlay" id="navOverlay"></div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Us</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="lead">At Starling Woodworking, we believe that every piece of wood tells a story.</p>
-                    <p>With years of experience and an unwavering commitment to quality, we transform raw materials into timeless pieces that enhance your living spaces. Our dedication to craftsmanship ensures that each project receives the attention to detail it deserves.</p>
-                    <p>From custom furniture to intricate woodwork, we bring your vision to life with precision and passion.</p>
-                </div>
-                <div class="about-image">
-                    <img src="images/workshop.jpg" alt="Our Workshop" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22%3E%3Crect fill=%22%23ddd%22 width=%22600%22 height=%22400%22/%3E%3Ctext fill=%22%23999%22 font-family=%22sans-serif%22 font-size=%2224%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EWorkshop Image%3C/text%3E%3C/svg%3E'">
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Handcrafted in Alabama</p>
+      <h1 class="hero__title">Built to<br>Last a Lifetime</h1>
+      <p class="hero__tagline">Lifetime-quality furniture for everyday budgets.</p>
+      <a href="#work" class="btn btn--light">See Our Work</a>
+    </div>
+    <div class="hero__scroll-hint">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Services</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                            <path d="M3 9h18M9 21V9"/>
-                        </svg>
-                    </div>
-                    <h3>Custom Furniture</h3>
-                    <p>Bespoke pieces designed and crafted to perfectly fit your space and style. From dining tables to bedroom sets.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                        </svg>
-                    </div>
-                    <h3>Cabinetry</h3>
-                    <p>Expert kitchen and bathroom cabinetry, built-ins, and storage solutions that maximize functionality.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
-                    </div>
-                    <h3>Millwork</h3>
-                    <p>Fine architectural woodwork including crown molding, wainscoting, and custom trim details.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                        </svg>
-                    </div>
-                    <h3>Restoration</h3>
-                    <p>Breathe new life into cherished pieces with our expert furniture restoration and refinishing services.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Styles Strip -->
+  <section class="styles-strip">
+    <div class="styles-strip__inner">
+      <div class="styles-strip__item reveal">
+        <span class="styles-strip__num">01</span>
+        <h3>Farmhouse</h3>
+        <p>Rustic warmth with clean lines and natural character</p>
+      </div>
+      <div class="styles-strip__divider"></div>
+      <div class="styles-strip__item reveal">
+        <span class="styles-strip__num">02</span>
+        <h3>Classic</h3>
+        <p>Timeless profiles built for generations</p>
+      </div>
+      <div class="styles-strip__divider"></div>
+      <div class="styles-strip__item reveal">
+        <span class="styles-strip__num">03</span>
+        <h3>Craftsman</h3>
+        <p>Precision joinery and purposeful detailing</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Work</h2>
-                <div class="divider"></div>
-                <p class="section-subtitle">A showcase of our finest craftsmanship</p>
-            </div>
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- Portfolio items will be populated here -->
-                <div class="portfolio-item" data-category="furniture">
-                    <img src="images/project1.jpg" alt="Custom Dining Table" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%238B4513%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22%23fff%22 font-family=%22sans-serif%22 font-size=%2218%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EProject 1%3C/text%3E%3C/svg%3E'">
-                    <div class="portfolio-overlay">
-                        <h3>Custom Dining Table</h3>
-                        <p>Live edge walnut with steel base</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="cabinetry">
-                    <img src="images/project2.jpg" alt="Kitchen Cabinetry" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23A0522D%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22%23fff%22 font-family=%22sans-serif%22 font-size=%2218%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EProject 2%3C/text%3E%3C/svg%3E'">
-                    <div class="portfolio-overlay">
-                        <h3>Kitchen Cabinetry</h3>
-                        <p>Custom oak cabinets with soft-close</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="furniture">
-                    <img src="images/project3.jpg" alt="Bookshelf Unit" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23654321%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22%23fff%22 font-family=%22sans-serif%22 font-size=%2218%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EProject 3%3C/text%3E%3C/svg%3E'">
-                    <div class="portfolio-overlay">
-                        <h3>Built-in Bookshelf</h3>
-                        <p>Floor-to-ceiling cherry wood</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="furniture">
-                    <img src="images/project4.jpg" alt="Coffee Table" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23D2691E%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22%23fff%22 font-family=%22sans-serif%22 font-size=%2218%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EProject 4%3C/text%3E%3C/svg%3E'">
-                    <div class="portfolio-overlay">
-                        <h3>Coffee Table</h3>
-                        <p>Reclaimed barn wood with glass top</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="millwork">
-                    <img src="images/project5.jpg" alt="Custom Trim Work" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23B8860B%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22%23fff%22 font-family=%22sans-serif%22 font-size=%2218%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EProject 5%3C/text%3E%3C/svg%3E'">
-                    <div class="portfolio-overlay">
-                        <h3>Custom Millwork</h3>
-                        <p>Crown molding and wainscoting</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="furniture">
-                    <img src="images/project6.jpg" alt="Bedroom Set" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23CD853F%22 width=%22400%22 height=%22300%22/%3E%3Ctext fill=%22%23fff%22 font-family=%22sans-serif%22 font-size=%2218%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22%3EProject 6%3C/text%3E%3C/svg%3E'">
-                    <div class="portfolio-overlay">
-                        <h3>Bedroom Set</h3>
-                        <p>Maple bed frame and nightstands</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightboxImg">
-        <div class="lightbox-caption" id="lightboxCaption"></div>
-        <button class="lightbox-prev" id="prevBtn">&#10094;</button>
-        <button class="lightbox-next" id="nextBtn">&#10095;</button>
+  <!-- Gallery -->
+  <section class="gallery" id="work">
+    <div class="gallery__header">
+      <div class="gallery__header-text">
+        <h2 class="section-title reveal">Our Work</h2>
+        <p class="section-sub reveal">Every piece handcrafted from hardwoods — poplar, oak, walnut, maple, and cherry</p>
+      </div>
+      <div class="gallery__filters" id="galleryFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="farmhouse">Farmhouse</button>
+        <button class="filter-btn" data-filter="classic">Classic</button>
+        <button class="filter-btn" data-filter="craftsman">Craftsman</button>
+        <button class="filter-btn" data-filter="decor">Home Décor</button>
+        <button class="filter-btn" data-filter="custom">Custom</button>
+      </div>
     </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Get In Touch</h2>
-                <div class="divider"></div>
-                <p class="section-subtitle">Let's discuss your next project</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Your City, State</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>(555) 123-4567</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@starlingwoodworking.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-hours">
-                        <h4>Business Hours</h4>
-                        <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                        <p>Saturday: 9:00 AM - 4:00 PM</p>
-                        <p>Sunday: Closed</p>
-                    </div>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Interested In</label>
-                        <select id="service" name="service">
-                            <option value="">Select a service...</option>
-                            <option value="furniture">Custom Furniture</option>
-                            <option value="cabinetry">Cabinetry</option>
-                            <option value="millwork">Millwork</option>
-                            <option value="restoration">Restoration</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                    <div class="form-message" id="formMessage"></div>
-                </form>
-            </div>
-        </div>
-    </section>
+    <div class="gallery__grid" id="galleryGrid">
+      <!-- Farmhouse -->
+      <figure class="gallery__item" data-category="farmhouse">
+        <img src="images/FarmhouseStyle/20260212_172822.webp" alt="Farmhouse style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Farmhouse Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="farmhouse">
+        <img src="images/FarmhouseStyle/20260212_172838.webp" alt="Farmhouse style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Farmhouse Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="farmhouse">
+        <img src="images/FarmhouseStyle/20260212_173411.webp" alt="Farmhouse style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Farmhouse Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="farmhouse">
+        <img src="images/FarmhouseStyle/20260324_180454.webp" alt="Farmhouse style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Farmhouse Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="farmhouse">
+        <img src="images/FarmhouseStyle/IMG_20250914_191633046.webp" alt="Farmhouse style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Farmhouse Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="farmhouse">
+        <img src="images/MiscBuilds/FarmhouseTallDeluxeWhite.webp" alt="Farmhouse Tall Deluxe in White" loading="lazy" width="800" height="600">
+        <figcaption>Farmhouse — Tall Deluxe</figcaption>
+      </figure>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Starling Woodworking</h3>
-                    <p>Crafting timeless pieces since day one</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Pinterest">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M8 12c0-2.5 2-4.5 4.5-4.5S17 9.5 17 12c0 1.5-.5 2.7-1.4 3.5-.4.4-1 .6-1.6.6-.5 0-1-.2-1.3-.6-.2.8-.5 1.5-.9 2.1-.4.6-.9 1.1-1.5 1.4-.2.1-.4.1-.6.1-.6 0-1.1-.3-1.4-.8-.3-.5-.4-1.1-.3-1.7.1-.6.4-1.2.8-1.7"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Starling Woodworking. All rights reserved.</p>
-                <p class="site-credit">Website by <a href="https://www.cristocreativetech.com" target="_blank" rel="noopener noreferrer">Cristo Creative Tech LLC</a></p>
-            </div>
-        </div>
-    </footer>
+      <!-- Classic -->
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/20220917_084303.webp" alt="Classic style bedroom furniture" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/20220917_084435.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/20220917_085036.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/20221105_092737.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/20211206_141421.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/20220528_113828.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/20220929_210701.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/4DClassicWhiteDark2.webp" alt="Classic furniture in white and dark finish" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/IMG_20260328_103839944_HDR.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/IMG_20260328_104346214.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="classic">
+        <img src="images/ClassicStyle/20260207_151035.webp" alt="Classic style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Classic Collection</figcaption>
+      </figure>
 
-    <script src="script.js"></script>
+      <!-- Craftsman -->
+      <figure class="gallery__item" data-category="craftsman">
+        <img src="images/CraftsmanStyle/IMG_20260420_072605.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Craftsman Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="craftsman">
+        <img src="images/CraftsmanStyle/IMG_20260420_072607.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Craftsman Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="craftsman">
+        <img src="images/CraftsmanStyle/IMG_20260420_072609.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Craftsman Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="craftsman">
+        <img src="images/CraftsmanStyle/IMG_20260420_072611.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Craftsman Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="craftsman">
+        <img src="images/CraftsmanStyle/IMG_20260420_072615.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Craftsman Collection</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="craftsman">
+        <img src="images/CraftsmanStyle/IMG_20260420_072617.webp" alt="Craftsman style furniture" loading="lazy" width="800" height="600">
+        <figcaption>Craftsman Collection</figcaption>
+      </figure>
+
+      <!-- Home Décor -->
+      <figure class="gallery__item" data-category="decor">
+        <img src="images/HomeDecor/20200428_142454.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
+        <figcaption>Home Décor</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="decor">
+        <img src="images/HomeDecor/20200428_142556.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
+        <figcaption>Home Décor</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="decor">
+        <img src="images/HomeDecor/20210326_170629.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
+        <figcaption>Home Décor</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="decor">
+        <img src="images/HomeDecor/20210326_170648.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
+        <figcaption>Home Décor</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="decor">
+        <img src="images/HomeDecor/20210326_170652.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
+        <figcaption>Home Décor</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="decor">
+        <img src="images/HomeDecor/20210326_170735.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
+        <figcaption>Home Décor</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="decor">
+        <img src="images/HomeDecor/20220111_155042.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
+        <figcaption>Home Décor</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="decor">
+        <img src="images/HomeDecor/20220207_130825.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
+        <figcaption>Home Décor</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="decor">
+        <img src="images/HomeDecor/20220328_151630.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
+        <figcaption>Home Décor</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="decor">
+        <img src="images/HomeDecor/20220401_105904.webp" alt="Custom home décor" loading="lazy" width="800" height="600">
+        <figcaption>Home Décor</figcaption>
+      </figure>
+
+      <!-- Custom -->
+      <figure class="gallery__item" data-category="custom">
+        <img src="images/MiscBuilds/20220729_133621b.webp" alt="Custom build" loading="lazy" width="800" height="600">
+        <figcaption>Custom Build</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="custom">
+        <img src="images/MiscBuilds/20230406_193825b.webp" alt="Custom build" loading="lazy" width="800" height="600">
+        <figcaption>Custom Build</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="custom">
+        <img src="images/MiscBuilds/20230414_122848.webp" alt="Custom build" loading="lazy" width="800" height="600">
+        <figcaption>Custom Build</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="custom">
+        <img src="images/MiscBuilds/20250215_205626.webp" alt="Custom build" loading="lazy" width="800" height="600">
+        <figcaption>Custom Build</figcaption>
+      </figure>
+      <figure class="gallery__item" data-category="custom">
+        <img src="images/diningtable.webp" alt="Custom dining table" loading="lazy" width="800" height="600">
+        <figcaption>Custom Dining Table</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close">&#x2715;</button>
+    <button class="lightbox__prev" id="lightboxPrev" aria-label="Previous image">&#x2039;</button>
+    <button class="lightbox__next" id="lightboxNext" aria-label="Next image">&#x203a;</button>
+    <div class="lightbox__img-wrap">
+      <img id="lightboxImg" src="" alt="">
+      <p class="lightbox__caption" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="about__inner">
+      <div class="about__text reveal">
+        <span class="eyebrow">Our Story</span>
+        <h2 class="section-title">Quality Is the<br>Only Standard</h2>
+        <p>Our family business was founded to meet the need for durable, high-quality furniture — a value that still guides every piece we make. Drawing on experience with a master craftsman, we know the importance of lasting, beautiful work.</p>
+        <p>That's why we use sturdy hardwoods like poplar, oak, walnut, maple, and cherry — and why we oversee every detail, crafting our own drawer slides and hinges to uphold our standards. Our commitment has built both reliable furniture and strong relationships with customers who appreciate superior workmanship.</p>
+        <div class="about__woods">
+          <span>Poplar</span><span>Oak</span><span>Walnut</span><span>Maple</span><span>Cherry</span>
+        </div>
+      </div>
+      <div class="about__images reveal">
+        <div class="about__img-stack">
+          <img src="images/ProcessPics/IMG_20260323_133401058.webp" alt="Woodworking in progress" loading="lazy" width="560" height="420">
+          <img src="images/ProcessPics/IMG_20260405_195255925.webp" alt="Detail of handcrafted furniture" loading="lazy" width="560" height="420" class="about__img-offset">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process">
+    <div class="process__header">
+      <span class="eyebrow reveal">The Craft</span>
+      <h2 class="section-title reveal">From Wood to Home</h2>
+    </div>
+    <div class="process__strip" id="processStrip">
+      <div class="process__track">
+        <div class="process__slide">
+          <img src="images/ProcessPics/IMG_20250728_204350309.webp" alt="Selecting hardwoods" loading="lazy" width="360" height="270">
+          <p>Selecting the finest hardwoods</p>
+        </div>
+        <div class="process__slide">
+          <img src="images/ProcessPics/IMG_20251008_105708612.webp" alt="Precision cutting" loading="lazy" width="360" height="270">
+          <p>Precision cutting and shaping</p>
+        </div>
+        <div class="process__slide">
+          <img src="images/ProcessPics/IMG_20251013_083929063.webp" alt="Handcrafted joinery" loading="lazy" width="360" height="270">
+          <p>Handcrafted joinery</p>
+        </div>
+        <div class="process__slide">
+          <img src="images/ProcessPics/IMG_20260324_162225083.webp" alt="Custom hardware" loading="lazy" width="360" height="270">
+          <p>Custom hardware and finishing</p>
+        </div>
+        <div class="process__slide">
+          <img src="images/ProcessPics/IMG_20260405_195317839.webp" alt="Final inspection" loading="lazy" width="360" height="270">
+          <p>Final inspection before delivery</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="services__inner">
+      <div class="services__header">
+        <span class="eyebrow reveal">What We Build</span>
+        <h2 class="section-title reveal">Our Services</h2>
+      </div>
+      <div class="services__grid">
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="4" y="8" width="32" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M4 16h32M14 8v24" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>Bedroom Furniture</h3>
+          <p>Choose from Farmhouse, Classic, or Craftsman styles. Add a single piece or furnish the entire room.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="4" y="14" width="32" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 14V11a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3M12 32v3M28 32v3" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>Living Rooms &amp; Dens</h3>
+          <p>Coffee tables, end tables, entertainment consoles, sectionals, desks, and bookcases available.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="5" y="10" width="30" height="22" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M5 18h30M14 10v22" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="30" cy="26" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>Kitchens &amp; Dining</h3>
+          <p>Custom islands, coffee bars, buffets, and China cabinets crafted to your specifications.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M20 5l3.5 7 7.5 1-5.5 5.5 1.5 7.5L20 23l-7 3.5 1.5-7.5L9 13.5l7.5-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Custom Home Décor</h3>
+          <p>Jewelry boxes, candlesticks, personalized wall art, and Christmas ornaments — all handcrafted.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="testimonials__inner">
+      <div class="testimonials__header">
+        <span class="eyebrow reveal">Happy Customers</span>
+        <h2 class="section-title reveal">What People Say</h2>
+      </div>
+      <div class="testimonials__grid">
+        <blockquote class="testimonial reveal">
+          <p>"Absolutely beautiful work. The bedroom set we ordered is exactly what we envisioned — the quality is remarkable. We'll be ordering again soon."</p>
+          <cite>— Shannon M., Opelika, AL</cite>
+        </blockquote>
+        <blockquote class="testimonial reveal">
+          <p>"We commissioned a custom coffee bar and it is stunning. The craftsmanship is beyond what you find in any store. Worth every penny."</p>
+          <cite>— David &amp; Renee T., Auburn, AL</cite>
+        </blockquote>
+        <blockquote class="testimonial reveal">
+          <p>"These pieces are heirlooms. Solid, beautiful, and built like furniture used to be. Our kids will be arguing over who gets them someday."</p>
+          <cite>— Linda K., Montgomery, AL</cite>
+        </blockquote>
+      </div>
+      <p class="testimonials__note reveal">See more reviews on our <a href="https://www.facebook.com/starlingwoodworking" target="_blank" rel="noopener noreferrer">Facebook page ↗</a></p>
+    </div>
+  </section>
+
+  <!-- Visit / Contact -->
+  <section class="visit" id="visit">
+    <div class="visit__inner">
+      <div class="visit__text reveal">
+        <span class="eyebrow">Come See Us</span>
+        <h2 class="section-title">Ready to Start<br>Your Project?</h2>
+        <p>Visit our showroom at Angel's Antiques in Opelika, Alabama — or reach out directly. We'd love to talk through your vision and find the perfect piece for your home.</p>
+        <div class="visit__details">
+          <div class="visit__detail">
+            <strong>Showroom</strong>
+            <address>Angel's Antiques<br>900 Columbus Pkwy<br>Opelika, AL 36801</address>
+          </div>
+          <div class="visit__detail">
+            <strong>Phone</strong>
+            <a href="tel:3346511661">(334) 651-1661</a>
+          </div>
+          <div class="visit__detail">
+            <strong>Email</strong>
+            <a href="mailto:info@starlingwoodworking.com">info@starlingwoodworking.com</a>
+          </div>
+        </div>
+        <div class="visit__social">
+          <a href="https://www.facebook.com/starlingwoodworking" target="_blank" rel="noopener noreferrer" class="social-link">Facebook</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.instagram.com/starlingwoodworking" target="_blank" rel="noopener noreferrer" class="social-link">Instagram</a>
+        </div>
+      </div>
+      <div class="visit__cta reveal">
+        <a href="mailto:info@starlingwoodworking.com" class="btn btn--dark btn--lg">Send Us a Message</a>
+        <a href="tel:3346511661" class="btn btn--outline btn--lg">Call (334) 651-1661</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="images/Logo/Website Logo.svg" alt="Starling Woodworking" height="44" width="140">
+        <p>We build lifetime-quality furniture for everyday budgets.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#work">Our Work</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#visit">Visit Us</a>
+      </nav>
+      <p class="footer__copy">© 2025 Starling Woodworking · Franklin, AL &nbsp;·&nbsp; Site by <a href="https://cristocreativetech.com" target="_blank" rel="noopener noreferrer" class="footer__credit">Cristo Creative Tech</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

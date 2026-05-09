@@ -1,335 +1,173 @@
-// ===================================
-// Mobile Navigation Toggle
-// ===================================
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
-const navLinks = document.querySelectorAll('.nav-link');
+/* =============================================
+   STARLING WOODWORKING — script.js
+   ============================================= */
 
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-    });
-});
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-    }
-});
-
-// ===================================
-// Smooth Scrolling for Navigation Links
-// ===================================
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-
-        if (targetSection) {
-            const navbarHeight = document.querySelector('.navbar').offsetHeight;
-            const targetPosition = targetSection.offsetTop - navbarHeight;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// ===================================
-// Navbar Background on Scroll
-// ===================================
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
-
+/* --- Nav: scroll state --- */
+const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
 
-    if (currentScroll > 100) {
-        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
-    } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
+/* --- Nav: mobile drawer --- */
+const navBurger = document.getElementById('navBurger');
+const navLinks  = document.getElementById('navLinks');
+const navOverlay = document.getElementById('navOverlay');
 
-    lastScroll = currentScroll;
+navBurger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navBurger.classList.toggle('open', open);
+  navOverlay.classList.toggle('active', open);
+  navBurger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
 });
 
-// ===================================
-// Portfolio Lightbox Functionality
-// ===================================
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
+[navOverlay, ...navLinks.querySelectorAll('.nav__link')].forEach(el =>
+  el.addEventListener('click', closeMenu)
+);
+
+function closeMenu() {
+  navLinks.classList.remove('open');
+  navBurger.classList.remove('open');
+  navOverlay.classList.remove('active');
+  navBurger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+/* --- Hero: slow bg zoom on load --- */
+const heroBg = document.querySelector('.hero__bg');
+if (heroBg) {
+  const heroImg = new Image();
+  heroImg.onload = () => heroBg.classList.add('loaded');
+  heroImg.src = 'images/hero.webp';
+  if (heroImg.complete) heroBg.classList.add('loaded');
+}
+
+/* --- Smooth scroll (offset for fixed nav) --- */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', e => {
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
+
+/* --- Gallery filter --- */
+const filterBtns   = document.querySelectorAll('.filter-btn');
+const galleryItems = Array.from(document.querySelectorAll('.gallery__item'));
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    galleryItems.forEach(item => {
+      item.classList.toggle('hidden', filter !== 'all' && item.dataset.category !== filter);
+    });
+  });
+});
+
+/* --- Lightbox --- */
+const lightbox        = document.getElementById('lightbox');
+const lightboxImg     = document.getElementById('lightboxImg');
 const lightboxCaption = document.getElementById('lightboxCaption');
-const closeBtn = document.querySelector('.lightbox-close');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+const lightboxClose   = document.getElementById('lightboxClose');
+const lightboxPrev    = document.getElementById('lightboxPrev');
+const lightboxNext    = document.getElementById('lightboxNext');
 
-let currentImageIndex = 0;
-const images = [];
+let currentIndex = 0;
 
-// Populate images array from portfolio items
-portfolioItems.forEach((item, index) => {
-    const img = item.querySelector('img');
-    const title = item.querySelector('h3').textContent;
-    const description = item.querySelector('p').textContent;
-
-    images.push({
-        src: img.src,
-        alt: img.alt,
-        title: title,
-        description: description
-    });
-
-    // Add click event to open lightbox
-    item.addEventListener('click', () => {
-        openLightbox(index);
-    });
-});
+function visibleItems() {
+  return galleryItems.filter(i => !i.classList.contains('hidden'));
+}
 
 function openLightbox(index) {
-    currentImageIndex = index;
-    updateLightboxImage();
-    lightbox.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+  currentIndex = index;
+  renderLightbox();
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  lightboxClose.focus();
+}
+
+function renderLightbox() {
+  const items = visibleItems();
+  const item  = items[currentIndex];
+  const img   = item.querySelector('img');
+  const cap   = item.querySelector('figcaption');
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  lightboxCaption.textContent = cap ? cap.textContent : '';
+  lightboxPrev.style.visibility = currentIndex > 0 ? 'visible' : 'hidden';
+  lightboxNext.style.visibility = currentIndex < items.length - 1 ? 'visible' : 'hidden';
 }
 
 function closeLightbox() {
-    lightbox.style.display = 'none';
-    document.body.style.overflow = 'auto';
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+  lightboxImg.src = '';
 }
 
-function updateLightboxImage() {
-    const image = images[currentImageIndex];
-    lightboxImg.src = image.src;
-    lightboxImg.alt = image.alt;
-    lightboxCaption.innerHTML = `<strong>${image.title}</strong><br>${image.description}`;
-}
-
-function showNextImage() {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    updateLightboxImage();
-}
-
-function showPrevImage() {
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-    updateLightboxImage();
-}
-
-// Event listeners for lightbox
-closeBtn.addEventListener('click', closeLightbox);
-nextBtn.addEventListener('click', showNextImage);
-prevBtn.addEventListener('click', showPrevImage);
-
-// Close lightbox when clicking outside the image
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-        closeLightbox();
-    }
+galleryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const idx = visibleItems().indexOf(item);
+    if (idx !== -1) openLightbox(idx);
+  });
 });
 
-// Keyboard navigation for lightbox
-document.addEventListener('keydown', (e) => {
-    if (lightbox.style.display === 'block') {
-        if (e.key === 'Escape') {
-            closeLightbox();
-        } else if (e.key === 'ArrowRight') {
-            showNextImage();
-        } else if (e.key === 'ArrowLeft') {
-            showPrevImage();
-        }
-    }
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+lightboxPrev.addEventListener('click', () => {
+  if (currentIndex > 0) { currentIndex--; renderLightbox(); }
+});
+lightboxNext.addEventListener('click', () => {
+  if (currentIndex < visibleItems().length - 1) { currentIndex++; renderLightbox(); }
 });
 
-// ===================================
-// Contact Form Validation & Submission
-// ===================================
-const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape')      closeLightbox();
+  if (e.key === 'ArrowLeft'  && currentIndex > 0) { currentIndex--; renderLightbox(); }
+  if (e.key === 'ArrowRight' && currentIndex < visibleItems().length - 1) { currentIndex++; renderLightbox(); }
+});
 
-contactForm.addEventListener('submit', async (e) => {
+/* Touch swipe in lightbox */
+let touchStartX = 0;
+lightbox.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+lightbox.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) < 40) return;
+  if (dx < 0 && currentIndex < visibleItems().length - 1) { currentIndex++; renderLightbox(); }
+  if (dx > 0 && currentIndex > 0) { currentIndex--; renderLightbox(); }
+});
+
+/* --- Process strip: drag to scroll --- */
+const strip = document.getElementById('processStrip');
+if (strip) {
+  let isDown = false, startX, scrollLeft;
+  strip.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.pageX - strip.offsetLeft;
+    scrollLeft = strip.scrollLeft;
+  });
+  strip.addEventListener('mouseleave', () => { isDown = false; });
+  strip.addEventListener('mouseup',    () => { isDown = false; });
+  strip.addEventListener('mousemove', e => {
+    if (!isDown) return;
     e.preventDefault();
-
-    // Get form values
-    const formData = {
-        name: document.getElementById('name').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        service: document.getElementById('service').value,
-        message: document.getElementById('message').value.trim()
-    };
-
-    // Validate form
-    if (!validateForm(formData)) {
-        return;
-    }
-
-    // Simulate form submission (replace with actual form submission logic)
-    try {
-        // Show loading state
-        const submitBtn = contactForm.querySelector('.btn-primary');
-        const originalBtnText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
-
-        // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        // In production, you would send the form data to your server here
-        // Example:
-        // const response = await fetch('/api/contact', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(formData)
-        // });
-
-        // Show success message
-        showFormMessage('Thank you for your message! We will get back to you soon.', 'success');
-        contactForm.reset();
-
-        // Reset button
-        submitBtn.textContent = originalBtnText;
-        submitBtn.disabled = false;
-
-    } catch (error) {
-        showFormMessage('Something went wrong. Please try again later.', 'error');
-
-        // Reset button
-        const submitBtn = contactForm.querySelector('.btn-primary');
-        submitBtn.textContent = 'Send Message';
-        submitBtn.disabled = false;
-    }
-});
-
-function validateForm(data) {
-    // Reset previous errors
-    formMessage.style.display = 'none';
-
-    // Validate name
-    if (data.name.length < 2) {
-        showFormMessage('Please enter a valid name.', 'error');
-        return false;
-    }
-
-    // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-        showFormMessage('Please enter a valid email address.', 'error');
-        return false;
-    }
-
-    // Validate phone (if provided)
-    if (data.phone && data.phone.length > 0) {
-        const phoneRegex = /^[\d\s\-\+\(\)]+$/;
-        if (!phoneRegex.test(data.phone) || data.phone.replace(/\D/g, '').length < 10) {
-            showFormMessage('Please enter a valid phone number.', 'error');
-            return false;
-        }
-    }
-
-    // Validate message
-    if (data.message.length < 10) {
-        showFormMessage('Please enter a message with at least 10 characters.', 'error');
-        return false;
-    }
-
-    return true;
+    strip.scrollLeft = scrollLeft - (e.pageX - strip.offsetLeft - startX);
+  });
 }
 
-function showFormMessage(message, type) {
-    formMessage.textContent = message;
-    formMessage.className = `form-message ${type}`;
-    formMessage.style.display = 'block';
-
-    // Scroll to message
-    formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-    // Auto-hide success messages after 5 seconds
-    if (type === 'success') {
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
+/* --- Scroll reveal (Intersection Observer) --- */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
-}
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
 
-// ===================================
-// Input Field Animation
-// ===================================
-const formInputs = document.querySelectorAll('.form-group input, .form-group textarea, .form-group select');
-
-formInputs.forEach(input => {
-    input.addEventListener('focus', () => {
-        input.parentElement.classList.add('focused');
-    });
-
-    input.addEventListener('blur', () => {
-        if (!input.value) {
-            input.parentElement.classList.remove('focused');
-        }
-    });
-});
-
-// ===================================
-// Scroll Animation Observer (Optional Enhancement)
-// ===================================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe elements for animation
-const animateElements = document.querySelectorAll('.service-card, .portfolio-item, .about-text, .about-image');
-animateElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
-
-// ===================================
-// Initialize on Page Load
-// ===================================
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Starling Woodworking website loaded successfully!');
-
-    // Add active class to current section in navigation
-    const sections = document.querySelectorAll('section[id]');
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.pageYOffset >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    });
-});
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
