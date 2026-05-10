@@ -173,15 +173,18 @@ document.querySelectorAll('.style-card').forEach(card => {
 /* =============================================
    LIGHTBOX
    ============================================= */
-const lightbox        = document.getElementById('lightbox');
-const lightboxImg     = document.getElementById('lightboxImg');
-const lightboxCaption = document.getElementById('lightboxCaption');
-const lightboxClose   = document.getElementById('lightboxClose');
-const lightboxPrev    = document.getElementById('lightboxPrev');
-const lightboxNext    = document.getElementById('lightboxNext');
+const lightbox          = document.getElementById('lightbox');
+const lightboxImg       = document.getElementById('lightboxImg');
+const lightboxCaption   = document.getElementById('lightboxCaption');
+const lightboxClose     = document.getElementById('lightboxClose');
+const lightboxPrev      = document.getElementById('lightboxPrev');
+const lightboxNext      = document.getElementById('lightboxNext');
+const lightboxDots      = document.getElementById('lightboxDots');
+const lightboxSwipeHint = document.getElementById('lightboxSwipeHint');
 
-let currentStyle = null;
-let currentIdx   = 0;
+let currentStyle    = null;
+let currentIdx      = 0;
+let swipeHintShown  = false;
 
 function openLightbox(style, startIdx = 0) {
   currentStyle = style;
@@ -190,6 +193,13 @@ function openLightbox(style, startIdx = 0) {
   lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';
   lightboxClose.focus();
+
+  if (!swipeHintShown && window.matchMedia('(max-width: 768px)').matches) {
+    swipeHintShown = true;
+    lightboxSwipeHint.classList.remove('show');
+    void lightboxSwipeHint.offsetWidth;
+    lightboxSwipeHint.classList.add('show');
+  }
 }
 
 function renderLightbox() {
@@ -199,6 +209,16 @@ function renderLightbox() {
   lightboxCaption.textContent = `${styleLabels[currentStyle]}  ·  ${currentIdx + 1} / ${images.length}`;
   lightboxPrev.style.visibility = currentIdx > 0 ? 'visible' : 'hidden';
   lightboxNext.style.visibility = currentIdx < images.length - 1 ? 'visible' : 'hidden';
+
+  lightboxDots.innerHTML = '';
+  if (images.length > 1) {
+    images.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = 'lightbox__dot' + (i === currentIdx ? ' active' : '');
+      dot.addEventListener('click', () => { currentIdx = i; renderLightbox(); });
+      lightboxDots.appendChild(dot);
+    });
+  }
 }
 
 function closeLightbox() {

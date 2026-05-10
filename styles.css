@@ -528,6 +528,55 @@ a, button, [tabindex], [role="button"] {
 }
 .lightbox__img-wrap:hover .lightbox__img-hint { opacity: 1; }
 
+/* Dot indicators — mobile nav affordance */
+.lightbox__dots {
+  display: none;
+  gap: 7px;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+.lightbox__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(250,246,239,0.22);
+  transition: background 0.22s, transform 0.22s;
+  cursor: pointer;
+}
+.lightbox__dot.active {
+  background: rgba(250,246,239,0.82);
+  transform: scale(1.35);
+}
+
+/* One-time swipe hint */
+.lightbox__swipe-hint {
+  position: absolute;
+  bottom: 2.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(250,246,239,0.08);
+  border: 1px solid rgba(250,246,239,0.18);
+  color: rgba(250,246,239,0.65);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.4rem 1.1rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  display: none;
+}
+.lightbox__swipe-hint.show {
+  display: block;
+  animation: swipeHintFade 2.6s ease forwards;
+}
+@keyframes swipeHintFade {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(5px); }
+  18%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  72%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(0); }
+}
+
 /* =============================================
    INQUIRY POPUP
    ============================================= */
@@ -1011,6 +1060,7 @@ a, button, [tabindex], [role="button"] {
     width: 44px;
     height: 52px;
   }
+  .lightbox__dots { display: flex; }
   .lightbox__close {
     top: max(1rem, env(safe-area-inset-top));
     right: max(1.5rem, env(safe-area-inset-right));
