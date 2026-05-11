@@ -1047,6 +1047,7 @@ a, button, [tabindex], [role="button"] {
 
   .styles-gallery__grid { grid-template-columns: 1fr; height: auto; }
   .style-card { height: 70vw; min-height: 280px; }
+  .style-card + .style-card { border-left: none; }
   /* Always show desc + cta on mobile (no hover) */
   .style-card__desc { max-height: 60px; opacity: 1; }
   .style-card__cta { opacity: 1; transform: none; }
