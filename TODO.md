@@ -1,10 +1,5 @@
 # Issues to fix
-1. The logo does not look good.
-2. The homepage is cluttered and difficult for viewers. Try showing the different styles, on hover: animate a slideshow of the different pics in those styles. On click, show a large clean slideshows that users can click through. DONE
-3. The home page is too long. Might be fixed by #2. DONE
-4. Handcrafted in Alabama in the hero image is too small and difficult to read DONE
-5. Whatever is in the lower left corner is not loading properly, just shows a white box. Done
-6. When clicking through slideshows, some of the pictures are in landscape and they need to be rotated to portrait. Done
+
 
 # Photo orientaion helper: DONE
 images/ClassicStyle/20210628_161302.webp clockwise
@@ -38,4 +33,4 @@ IMG_20250728_204350309.webp clockwise
 IMG_20260323_133401058.webp clockwise
 
 # Feature request
-1. When a visitor is viewing a collection, if they click on a picture, I want it to open a popup that asks if they're interested in contacting us about making a piece like this. It would be helpful if the it loaded an email message with some verbiage and a link to the picture they clicked.
+
