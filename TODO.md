@@ -34,3 +34,7 @@ IMG_20260323_133401058.webp clockwise
 
 # Feature request
 
+# Client Request
+1. Under the "our work" section we would like it to read "Traditional Style, Endless Possibilities"
+2. We would like to add a "Custom Projects" category and have gathered the pictures
+3. We want to arrange the categories as follows: Farmhouse, Classic, Waverly (change from Craftsman), Custom Projects and then Home Decor
