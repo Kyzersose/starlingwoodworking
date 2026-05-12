@@ -55,7 +55,7 @@ const styleImages = {
 const styleLabels = {
   farmhouse: 'Farmhouse',
   classic:   'Classic',
-  craftsman: 'Craftsman',
+  craftsman: 'Waverly',
   decor:     'Home Décor',
 };
 
