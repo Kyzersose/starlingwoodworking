@@ -100,6 +100,7 @@ a, button, [tabindex], [role="button"] {
 .nav::before {
   content: '';
   position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
   inset: 0;
   background: rgba(250,246,239,0.88);
   backdrop-filter: blur(14px);
@@ -199,6 +200,7 @@ a, button, [tabindex], [role="button"] {
 
 .nav__overlay {
   position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
   inset: 0;
   background: rgba(46,26,14,0.5);
   z-index: 98;
@@ -213,6 +215,7 @@ a, button, [tabindex], [role="button"] {
    ============================================= */
 .hero {
   position: relative;
+  height: 100vh;
   height: 100svh;
   min-height: 600px;
   display: flex;
@@ -222,6 +225,7 @@ a, button, [tabindex], [role="button"] {
 }
 .hero__bg {
   position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
   inset: 0;
   background-image: url('images/hero.webp');
   background-size: cover;
@@ -232,6 +236,7 @@ a, button, [tabindex], [role="button"] {
 .hero__bg.loaded { transform: scale(1); }
 .hero__overlay {
   position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
   inset: 0;
   background: linear-gradient(
     to bottom,
@@ -333,7 +338,7 @@ a, button, [tabindex], [role="button"] {
 }
 .style-card:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
 
-.style-card__bg { position: absolute; inset: 0; }
+.style-card__bg { position: absolute; top: 0; right: 0; bottom: 0; left: 0; inset: 0; }
 
 .style-card__img {
   position: absolute;
@@ -441,6 +446,7 @@ a, button, [tabindex], [role="button"] {
    ============================================= */
 .lightbox {
   position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
   inset: 0;
   z-index: 200;
   background: rgba(20,11,6,0.97);
@@ -582,6 +588,7 @@ a, button, [tabindex], [role="button"] {
    ============================================= */
 .inquiry {
   position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
   inset: 0;
   z-index: 300;
   display: flex;
