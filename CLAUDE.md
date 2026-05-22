@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Static HTML/CSS/JS website for **Starling Woodworking**, a family woodworking business in Franklin (Tuskegee), AL. The site is hosted on GitHub Pages at `starling.cristocreativetech.com` (CNAME). No build tools, no frameworks, no npm — just static files.
+Static HTML/CSS/JS website for **Starling Woodworking**, a family woodworking business in Franklin (Tuskegee), AL. The site is hosted on GitHub Pages at `starlingwoodworking.com` (CNAME). No build tools, no frameworks, no npm — just static files.
 
 ## Local Development
 
@@ -57,4 +57,4 @@ All product photos are JPEGs. Images need compression before production — targ
 
 ## Deployment
 
-Push to `master` → GitHub Pages auto-deploys to `starling.cristocreativetech.com`. The `CNAME` file must remain in the repo root.
+Push to `master` → GitHub Pages auto-deploys to `starlingwoodworking.com`. The `CNAME` file must remain in the repo root.
