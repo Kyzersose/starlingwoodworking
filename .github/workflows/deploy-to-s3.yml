@@ -23,7 +23,15 @@ jobs:
       # Step 3: Sync files to S3
       - name: Sync files to S3
         run: |
-          aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET }} --delete --exclude ".git/*" --exclude ".github/*" --exclude "screenshots/*" --size-only
+          aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET }} \
+            --delete \
+            --exclude "*" \
+            --include "*.html" \
+            --include "*.css" \
+            --include "*.js" \
+            --include "images/**" \
+            --include "robots.txt" \
+            --include "CNAME"
 
       # Step 4: Invalidate Cloudflare cache
       - name: Purge Cloudflare Cache
