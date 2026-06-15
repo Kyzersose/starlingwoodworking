@@ -2,17 +2,112 @@
    STARLING WOODWORKING — script.js
    ============================================= */
 
-/* --- All images per style, used for hover cycling and lightbox --- */
+/* --- All images per style, used for the lightbox gallery --- */
+/* To add images to the lightbox but NOT the hover slideshow, add them here only */
 const styleImages = {
   farmhouse: [
-    'images/Farmhouse/FH1.webp',
-    'images/Farmhouse/FH2.webp',
-    'images/Farmhouse/FH3.webp',
-    'images/Farmhouse/FH4.webp',
-    'images/Farmhouse/FH5.webp',
-    'images/Farmhouse/FH6.webp',
-    'images/Farmhouse/FH7.webp',
-    'images/Farmhouse/FH8.webp',
+    'images/Farmhouse/01-Bathroom Cabinet.webp',
+    'images/Farmhouse/02-Dovetail Drawers.webp',
+    'images/Farmhouse/03-Drawer Bedside Table.webp',
+    'images/Farmhouse/04-Drawer Bedside Tables.webp',
+    'images/Farmhouse/05-Bedside Table Dovetail Drawers.webp',
+    'images/Farmhouse/06-3-Drawer Chest.webp',
+    'images/Farmhouse/07- 3-Drawer Dovetail Drawers.webp',
+    'images/Farmhouse/08-5-Drawer Chest.webp',
+    'images/Farmhouse/09-Grey Coffee Bar.webp',
+    'images/Farmhouse/10-White Coffee Bar.webp',
+  ],
+  classic: [
+    'images/Classic/CL1-priced.webp',
+    'images/Classic/CL2.webp',
+    'images/Classic/CL3.webp',
+    'images/Classic/CL4.webp',
+    'images/Classic/CL5.webp',
+    'images/Classic/CL6.webp',
+    'images/Classic/CL7.webp',
+    'images/Classic/CL8.webp',
+    'images/Classic/CL9.webp',
+    'images/Classic/CL10.webp',
+    'images/Classic/CL11.webp',
+    'images/Classic/CL12.webp',
+    'images/Classic/CL13.webp',
+    'images/Classic/CL14.webp',
+    'images/Classic/CL15.webp',
+    'images/Classic/CL16.webp',
+    'images/Classic/CL17.webp',
+    'images/Classic/CL18.webp',
+    'images/Classic/CL19.webp',
+    'images/Classic/CL20.webp',
+  ],
+  waverly: [
+    'images/Waverly/lightbox/01-Walnut Wavery Set-priced.jpg',
+    'images/Waverly/lightbox/02-Walnut 3-Drawer Bedside Table-priced.jpg',
+    'images/Waverly/lightbox/03-Walnut 5-Drawer-priced.jpg',
+    'images/Waverly/lightbox/04-Knapp-Joint Drawers.jpg',
+    'images/Waverly/lightbox/05-Waverly back view.jpg',
+    'images/Waverly/lightbox/06-Finished back.jpg',
+    'images/Waverly/lightbox/07-Cherry 7-Drawer Dresser-priced.jpg',
+    'images/Waverly/lightbox/08-Cherry Set.jpg',
+    'images/Waverly/lightbox/09-Cherry Bedside Table-priced.jpg',
+    'images/Waverly/lightbox/11-Cherry Knapp-Joints.jpg',
+    'images/Waverly/lightbox/12-Knapp-Joint Drawers Dresser.jpg',
+    'images/Waverly/lightbox/13-Walnut-Framed Mirror.jpg',
+    'images/Waverly/lightbox/14-Waverly Bedside Table Inside.jpg',
+    'images/Waverly/lightbox/15-Wooden Hinges.jpg',
+  ],
+  custom: [
+    'images/Custom/CST1.webp',
+    'images/Custom/CST2.webp',
+    'images/Custom/CST3.webp',
+    'images/Custom/CST4.webp',
+    'images/Custom/CST5.webp',
+    'images/Custom/CST6.webp',
+    'images/Custom/CST7.webp',
+    'images/Custom/CST8.webp',
+    'images/Custom/CST9.webp',
+    'images/Custom/CST10.webp',
+    'images/Custom/CST11.webp',
+    'images/Custom/CST12.webp',
+    'images/Custom/CST13.webp',
+    'images/Custom/CST14.webp',
+    'images/Custom/CST15.webp',
+    'images/Custom/CST16.webp',
+    'images/Custom/CSt17.webp',
+    'images/Custom/CST18.webp',
+    'images/Custom/CST19.webp',
+    'images/Custom/CST20.webp',
+  ],
+  decor: [
+    'images/Home Decor/HD1.webp',
+    'images/Home Decor/HD2.webp',
+    'images/Home Decor/HD3.webp',
+    'images/Home Decor/HD4.webp',
+    'images/Home Decor/HD5.webp',
+    'images/Home Decor/HD6.webp',
+    'images/Home Decor/HD7.webp',
+    'images/Home Decor/HD8.webp',
+    'images/Home Decor/HD9.webp',
+    'images/Home Decor/HD10.webp',
+    'images/Home Decor/HD11.webp',
+    'images/Home Decor/HD12.webp',
+    'images/Home Decor/HD13.webp',
+    'images/Home Decor/HD14.webp',
+    'images/Home Decor/HD15.webp',
+    'images/Home Decor/HD16.webp',
+    'images/Home Decor/HD17.webp',
+    'images/Home Decor/HD18.webp',
+    'images/Home Decor/HD19.webp',
+  ],
+};
+
+/* --- Subset of images shown in the on-hover slideshow on the homepage --- */
+/* Add new photos to styleImages above for the lightbox; only list here if you want them in the slideshow too */
+const slideshowImages = {
+  farmhouse: [
+    'images/Farmhouse/01-Bathroom Cabinet.webp',
+    'images/Farmhouse/02-Dovetail Drawers.webp',
+    'images/Farmhouse/05-Bedside Table Dovetail Drawers.webp',
+    'images/Farmhouse/07- 3-Drawer Dovetail Drawers.webp',
   ],
   classic: [
     'images/Classic/CL1.webp',
@@ -165,7 +260,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    ============================================= */
 document.querySelectorAll('.style-card').forEach(card => {
   const style = card.dataset.style;
-  const images = styleImages[style];
+  const images = slideshowImages[style];
   if (!images) return;
 
   const imgA = card.querySelector('.style-card__img--a');
