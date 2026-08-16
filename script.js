@@ -5,6 +5,15 @@
 /* --- All images per style, used for the lightbox gallery --- */
 /* To add images to the lightbox but NOT the hover slideshow, add them here only */
 const styleImages = {
+  franklin: [
+    'images/Franklin/1. 7-Drawer Dresser.webp',
+    'images/Franklin/2. 5-Drawer Chest of Drawers.webp',
+    'images/Franklin/3. Dovetail Drawers.webp',
+    'images/Franklin/4. 3-Drawer Chest of Drawers.webp',
+    'images/Franklin/5. 3-Drawer Bedside Tables.webp',
+    'images/Franklin/6. 1-Door Bedside Tables.webp',
+    'images/Franklin/7. Twin Bed.webp',
+  ],
   farmhouse: [
     'images/Farmhouse/01-Bathroom Cabinet.webp',
     'images/Farmhouse/02-Dovetail Drawers.webp',
@@ -76,6 +85,7 @@ const styleImages = {
     'images/Custom/CST18.webp',
     'images/Custom/CST19.webp',
     'images/Custom/CST20.webp',
+    'images/Custom/WardBuffet.webp',
   ],
   decor: [
     'images/Home Decor/HD1.webp',
@@ -103,6 +113,15 @@ const styleImages = {
 /* --- Subset of images shown in the on-hover slideshow on the homepage --- */
 /* Add new photos to styleImages above for the lightbox; only list here if you want them in the slideshow too */
 const slideshowImages = {
+  franklin: [
+    'images/Franklin/1. 7-Drawer Dresser.webp',
+    'images/Franklin/2. 5-Drawer Chest of Drawers.webp',
+    'images/Franklin/3. Dovetail Drawers.webp',
+    'images/Franklin/4. 3-Drawer Chest of Drawers.webp',
+    'images/Franklin/5. 3-Drawer Bedside Tables.webp',
+    'images/Franklin/6. 1-Door Bedside Tables.webp',
+    'images/Franklin/7. Twin Bed.webp',
+  ],
   farmhouse: [
     'images/Farmhouse/01-Bathroom Cabinet.webp',
     'images/Farmhouse/02-Dovetail Drawers.webp',
@@ -172,6 +191,7 @@ const slideshowImages = {
     'images/Custom/CST18.webp',
     'images/Custom/CST19.webp',
     'images/Custom/CST20.webp',
+    'images/Custom/WardBuffet.webp',
   ],
   decor: [
     'images/Home Decor/HD1.webp',
@@ -197,6 +217,7 @@ const slideshowImages = {
 };
 
 const styleLabels = {
+  franklin:  'Franklin',
   farmhouse: 'Farmhouse',
   classic:   'Classic',
   waverly:   'Waverly',
