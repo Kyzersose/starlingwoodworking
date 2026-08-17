@@ -114,7 +114,7 @@ const styleImages = {
 /* Add new photos to styleImages above for the lightbox; only list here if you want them in the slideshow too */
 const slideshowImages = {
   franklin: [
-    'images/Franklin/1. 7-Drawer Dresser.webp',
+    'images/Franklin/0. 7-Drawer Dresser-no-price.webp',
     'images/Franklin/2. 5-Drawer Chest of Drawers.webp',
     'images/Franklin/3. Dovetail Drawers.webp',
     'images/Franklin/4. 3-Drawer Chest of Drawers.webp',
