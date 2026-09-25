@@ -177,6 +177,8 @@ a, button, [tabindex], [role="button"] {
 }
 .nav__cta:hover { background: var(--walnut); color: var(--cream); }
 
+.nav__link--shop { display: none; }
+
 .nav__burger {
   display: none;
   flex-direction: column;
@@ -287,6 +289,11 @@ a, button, [tabindex], [role="button"] {
   opacity: 0;
   transform: translateY(18px);
   animation: fadeUp 0.8s var(--ease) 0.7s forwards;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 .hero__content .btn {
   opacity: 0;
@@ -1042,6 +1049,16 @@ a, button, [tabindex], [role="button"] {
     align-items: center;
   }
   .nav__link::after { display: none; }
+
+  .nav__link--shop {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 2px;
+    background: var(--walnut);
+    color: var(--cream);
+  }
 
   .hero__title { font-size: clamp(2.8rem, 13vw, 5rem); }
   .hero__scroll-hint { display: none; }
