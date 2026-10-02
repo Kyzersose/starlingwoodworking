@@ -46,3 +46,6 @@ logs/
 # Claude Code
 .claude/
 *.md
+
+# Include
+!README.md
